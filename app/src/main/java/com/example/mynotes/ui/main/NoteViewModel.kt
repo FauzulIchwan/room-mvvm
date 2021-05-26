@@ -1,10 +1,10 @@
-package com.example.mynotes.db
+package com.example.mynotes.ui.main
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.AndroidViewModel
-import com.example.mynotes.db.notes.NoteRepository
+import androidx.lifecycle.LiveData
 import com.example.mynotes.db.notes.Note
+import com.example.mynotes.db.notes.NoteRepository
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 

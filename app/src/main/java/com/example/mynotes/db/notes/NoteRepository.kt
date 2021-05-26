@@ -9,13 +9,13 @@ import kotlinx.coroutines.runBlocking
 
 class NoteRepository(application: Application) {
 
-    private val noteDAO: NoteDAO?
+    private val noteDao: NoteDao?
     private var notes: LiveData<List<Note>>? = null
 
     init {
         val db = AppDatabase.getInstance(application.applicationContext)
-        noteDAO = db?.noteDao()
-        notes = noteDAO?.getNotes()
+        noteDao = db?.noteDao()
+        notes = noteDao?.getNotes()
     }
 
     fun getNotes(): LiveData<List<Note>>? {
@@ -24,21 +24,21 @@ class NoteRepository(application: Application) {
 
     fun insert(note: Note) = runBlocking {
         this.launch(Dispatchers.IO) {
-            noteDAO?.insertNote(note)
+            noteDao?.insertNote(note)
         }
     }
 
     fun delete(note: Note) {
         runBlocking {
             this.launch(Dispatchers.IO) {
-                noteDAO?.deleteNote(note)
+                noteDao?.deleteNote(note)
             }
         }
     }
 
     fun update(note: Note) = runBlocking {
         this.launch(Dispatchers.IO) {
-            noteDAO?.updateNote(note)
+            noteDao?.updateNote(note)
         }
     }
 
